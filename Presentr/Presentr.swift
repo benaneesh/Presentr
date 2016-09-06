@@ -81,7 +81,7 @@ public class Presentr: NSObject {
 
      - returns: Returns a configured instance of 'AlertViewController'
      */
-    public static func alertViewController(title title: String = PresentrConstants.Strings.alertTitle, body: String = PresentrConstants.Strings.alertBody) -> AlertViewController {
+    public static func alertViewController(title: String = PresentrConstants.Strings.alertTitle, body: String = PresentrConstants.Strings.alertBody) -> AlertViewController {
         let bundle = NSBundle(forClass: self)
         let alertController = AlertViewController(nibName: "Alert", bundle: bundle)
         alertController.titleText = title
@@ -121,8 +121,8 @@ public class Presentr: NSObject {
 
 extension Presentr: UIViewControllerTransitioningDelegate {
 
-    public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return presentationController(presented, presenting: presenting)
+    public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController?, sourceViewController source: UIViewController) -> UIPresentationController? {
+        return presentationController(presented, presenting: presenting ?? UIViewController())
     }
 
     public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

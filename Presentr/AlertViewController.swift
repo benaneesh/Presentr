@@ -234,16 +234,14 @@ extension AlertViewController {
         }
         let data = NSData(contentsOfFile: fontPath)
         var error: Unmanaged<CFError>?
-        let provider = CGDataProviderCreateWithCFData(data)
-        if let font = CGFontCreateWithDataProvider(provider) {
-            let success = CTFontManagerRegisterGraphicsFont(font, &error)
-            if !success {
-                print("Error loading font. Font is possibly already registered.")
-                return false
-            }
-        } else {
+        let provider = CGDataProviderCreateWithCFData(data!)
+        let font = CGFontCreateWithDataProvider(provider!)
+        let success = CTFontManagerRegisterGraphicsFont(font, &error)
+        if !success {
+            print("Error loading font. Font is possibly already registered.")
             return false
         }
+        
         return true
     }
 

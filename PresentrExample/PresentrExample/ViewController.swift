@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     }()
 
     lazy var alertController: AlertViewController = {
-        let alertController = Presentr.alertViewController(title: "Are you sure? ⚠️", body: "This action can't be undone!")
+        let alertController = Presentr.alertViewController("Are you sure? ⚠️", body: "This action can't be undone!")
         let cancelAction = AlertAction(title: "NO, SORRY! 😱", style: .Cancel) { alert in
             print("CANCEL!!")
         }
